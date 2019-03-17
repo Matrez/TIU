@@ -1,0 +1,74 @@
+//--------------------
+//-----VARIABLES-----
+//--------------------
+$button-grey-color: #e4e4e4;
+
+//--------------------
+//-----LOGIN PAGE-----
+//--------------------
+.login-wrapper {
+  height: 100vh;
+  background-image: url('/assets/img/login-bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .error-message-password-minimum,
+  .error-message-password-match,
+  .error-message-username,
+  .error-message-username-exists {
+    display: none;
+    color: #ff3232;
+    padding-bottom: 10px;
+  }
+
+  .register-demo-card {
+    min-height: 260px;
+  }
+
+  .login-card-menu {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      color: white;
+    }
+  }
+
+  .demo-card-wide {
+    display: flex;
+    align-items: center;
+  }
+
+  form {
+    width: 80%;
+    padding-bottom: 13px;
+
+    button {
+      width: 100%;
+      background: $button-grey-color;
+    }
+  }
+
+  .demo-card-wide {
+    &.mdl-card {
+      width: 310px;
+    }
+
+    > .mdl-card__menu {
+      color: #fff;
+    }
+  }
+
+  .registration-success {
+    width: 80%;
+    padding-top: 20px;
+    text-align: center;
+  }
+}
+

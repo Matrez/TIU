@@ -1,0 +1,55 @@
+.login-wrapper {
+  height: 100vh;
+  background-image: url("/assets/img/login-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-wrapper .error-message-password-minimum,
+.login-wrapper .error-message-password-match,
+.login-wrapper .error-message-username,
+.login-wrapper .error-message-username-exists {
+  display: none;
+  color: #ff3232;
+  padding-bottom: 10px;
+}
+.login-wrapper .register-demo-card {
+  min-height: 260px;
+}
+.login-wrapper .login-card-menu {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.login-wrapper .login-card-menu a {
+  color: white;
+}
+.login-wrapper .demo-card-wide {
+  display: flex;
+  align-items: center;
+}
+.login-wrapper form {
+  width: 80%;
+  padding-bottom: 13px;
+}
+.login-wrapper form button {
+  width: 100%;
+  background: #e4e4e4;
+}
+.login-wrapper .demo-card-wide.mdl-card {
+  width: 310px;
+}
+.login-wrapper .demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}
+.login-wrapper .registration-success {
+  width: 80%;
+  padding-top: 20px;
+  text-align: center;
+}
+
+/*# sourceMappingURL=style.css.map */
