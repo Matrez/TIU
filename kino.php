@@ -3,6 +3,7 @@ session_start();
 if ($_SESSION['loggedin'] != true) {
     // Pouzivatel NIEJE prihlaseny
     header('Location: /');
+    exit;
 }
 $pageTitle = 'Kino';
 include 'src/templates/header.php';
@@ -18,9 +19,9 @@ include 'src/templates/header-close.php';
             <ul class="right hide-on-med-and-down">
                 <li><a href="#">My reservations</a></li>
                 <li><a href="#">About</a></li>
-<!--                --><?php //if ($_SESSION['admin'] == true) { ?>
-<!--                    <li><a href="#">Admin page</a></li>-->
-<!--                --><?php //} ?>
+                <?php if (isset($_SESSION['admin'])) { ?>
+                    <li><a href="/admin-page.php">Admin page</a></li>
+                <?php } ?>
                 <li><a href="/src/templates/nav.php?logOut=1">Log Out</a></li>
             </ul>
         </div>
@@ -30,6 +31,9 @@ include 'src/templates/header-close.php';
         <li><a href="#">Kino</a></li>
         <li><a href="#">My reservations</a></li>
         <li><a href="#">About</a></li>
+        <?php if (isset($_SESSION['admin'])) { ?>
+            <li><a href="/admin-page.php">Admin page</a></li>
+        <?php } ?>
         <li><a href="/src/templates/nav.php?logOut=1">Log Out</a></li>
     </ul>
 
@@ -39,7 +43,7 @@ include 'src/templates/header-close.php';
                 <div class="col s12 m7">
                     <div class="card horizontal">
                         <div class="card-image">
-                            <img src="/src/img/1.jpg">
+                            <img src="/src/img/moviesimg/1.jpg">
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">

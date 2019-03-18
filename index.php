@@ -1,8 +1,12 @@
 <?php
 session_start();
-if ($_SESSION['loggedin'] == true) {
-    header('Location: /kino.php');
-    exit;
+if (isset($_SESSION['loggedin'])) {
+    // Pouzivatel uz ma cookienu
+    if ($_SESSION['loggedin'] == true) {
+        // Pouzivatel je prihlaseny
+        header('Location: /kino.php');
+        exit;
+    }
 }
 include 'src/templates/db-config.php';
 $pageTitle = 'Login';
@@ -62,18 +66,18 @@ include 'src/templates/footer.php';
         errorMessageUsername.style.display = 'none';
         const username = form.name.value;
         const password = form.password.value;
-        let dontReload = false;
+        let reload = true;
 
         // Check if username is empty
         if (username.length <= 0) {
-            dontReload = true;
+            reload = false;
         }
 
         // Check if password is empty
         if (password.length <= 0) {
-            dontReload = true;
+            reload = false;
         }
 
-        return !dontReload;
+        return reload;
     }
 </script>

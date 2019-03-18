@@ -2,6 +2,7 @@
 //-----VARIABLES-----
 //--------------------
 $button-grey-color: #e4e4e4;
+$primary-color: #f59947;
 $break-medium: 992px;
 $break-small: 489px;
 
@@ -85,7 +86,7 @@ $break-small: 489px;
   background-position: center top;
 
   nav {
-    background-color: #f59947;
+    background-color: $primary-color;
     display: flex;
     justify-content: center;
 
@@ -133,8 +134,27 @@ $break-small: 489px;
           }
         }
       }
-
-
     }
+  }
+}
+
+//--------------------
+//-----ADMIN PAGE-----
+//--------------------
+
+.movies-wrapper {
+  .file-field {
+    .btn {
+      margin-left: 10px;
+      background-color: $primary-color;
+    }
+  }
+
+  button.btn-submit {
+    background-color: $primary-color;
+  }
+  
+  .movie-success {
+    color: $primary-color;
   }
 }

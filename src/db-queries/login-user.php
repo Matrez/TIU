@@ -18,7 +18,7 @@ if (mysqli_num_rows($result) > 0) {
         $_SESSION['username'] = $username;
         $_SESSION['memberid'] = $row['id'];
 
-        if ($username === 'admin' && $row['id'] === 1) {
+        if ($username == 'admin' && $row['id'] == 1) {
             $_SESSION['admin'] = true;
         }
 

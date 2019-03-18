@@ -1,8 +1,12 @@
 <?php
 session_start();
-if ($_SESSION['loggedin'] == true) {
-    header('Location: /kino.php');
-    exit;
+if (isset($_SESSION['loggedin'])) {
+    // Pouzivatel uz ma cookienu
+    if ($_SESSION['loggedin'] == true) {
+        // Pouzivatel je prihlaseny
+        header('Location: /kino.php');
+        exit;
+    }
 }
 $pageTitle = 'Register';
 include 'src/templates/header.php';
@@ -77,12 +81,12 @@ include 'src/templates/footer.php';
         const errorMessagePasswordMatch = document.querySelector('.error-message-password-match');
         const errorMessagePasswordMinimum = document.querySelector('.error-message-password-minimum');
         const errorMessageUsername = document.querySelector('.error-message-username');
-        let dontReload = false;
+        let reload = true;
 
         // Check if username doesn't contain letters and  have white spaces
         if (!username.match('[a-zA-Z0-9]') || username.includes(' ')) {
             errorMessageUsername.style.display = 'block';
-            dontReload = true;
+            reload = false;
         } else {
             errorMessageUsername.style.display = 'none';
         }
@@ -90,7 +94,7 @@ include 'src/templates/footer.php';
         // Check if passwords don't match
         if (password !== passwordAgain) {
             errorMessagePasswordMatch.style.display = 'block';
-            dontReload = true;
+            reload = false;
         } else {
             errorMessagePasswordMatch.style.display = 'none';
         }
@@ -98,11 +102,11 @@ include 'src/templates/footer.php';
         // Check if password is shorter than 6
         if (password.length < 6) {
             errorMessagePasswordMinimum.style.display = 'block';
-            dontReload = true;
+            reload = false;
         } else {
             errorMessagePasswordMinimum.style.display = 'none';
         }
 
-        return !dontReload;
+        return reload;
     }
 </script>

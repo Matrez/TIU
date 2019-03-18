@@ -99,4 +99,15 @@
   max-height: 250px;
 }
 
+.movies-wrapper .file-field .btn {
+  margin-left: 10px;
+  background-color: #f59947;
+}
+.movies-wrapper button.btn-submit {
+  background-color: #f59947;
+}
+.movies-wrapper .movie-success {
+  color: #f59947;
+}
+
 /*# sourceMappingURL=style.css.map */
