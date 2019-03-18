@@ -17,6 +17,11 @@ if (mysqli_num_rows($result) > 0) {
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username;
         $_SESSION['memberid'] = $row['id'];
+
+        if ($username === 'admin' && $row['id'] === 1) {
+            $_SESSION['admin'] = true;
+        }
+
         header('Location: /kino.php');
         exit;
     } else {

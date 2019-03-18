@@ -12,13 +12,45 @@ $db = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 $createUserTable = 'CREATE TABLE IF NOT EXISTS users (
 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-username VARCHAR(30) NOT NULL,
+username VARCHAR(64) NOT NULL,
 password_hash CHAR(60) NOT NULL
 );';
 
-if (!mysqli_query($db, $createUserTable)) {
-    echo "Nepodarilo sa vytvorit zakladne tabulky";
-}
+$createSeatTable = 'CREATE TABLE IF NOT EXISTS seats (
+seatMovieId INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+seat1 TINYINT UNSIGNED NOT NULL,
+seat2 TINYINT UNSIGNED NOT NULL,
+seat3 TINYINT UNSIGNED NOT NULL,
+seat4 TINYINT UNSIGNED NOT NULL,
+seat5 TINYINT UNSIGNED NOT NULL,
+seat6 TINYINT UNSIGNED NOT NULL,
+seat7 TINYINT UNSIGNED NOT NULL,
+seat8 TINYINT UNSIGNED NOT NULL,
+seat9 TINYINT UNSIGNED NOT NULL,
+seat10 TINYINT UNSIGNED NOT NULL,
+seat11 TINYINT UNSIGNED NOT NULL,
+seat12 TINYINT UNSIGNED NOT NULL,
+seat13 TINYINT UNSIGNED NOT NULL,
+seat14 TINYINT UNSIGNED NOT NULL,
+seat15 TINYINT UNSIGNED NOT NULL,
+seat16 TINYINT UNSIGNED NOT NULL,
+seat17 TINYINT UNSIGNED NOT NULL,
+seat18 TINYINT UNSIGNED NOT NULL,
+seat19 TINYINT UNSIGNED NOT NULL,
+seat20 TINYINT UNSIGNED NOT NULL
+);';
+
+$createMovieTable = 'CREATE TABLE IF NOT EXISTS movies (
+movieId INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+title VARCHAR(64) NOT NULL,
+description VARCHAR(256) NOT NULL,
+seatMovieId INT UNSIGNED NOT NULL,
+FOREIGN KEY (seatMovieID) REFERENCES seats(seatMovieID)
+);';
+
+mysqli_query($db, $createUserTable);
+mysqli_query($db, $createMovieTable);
+mysqli_query($db, $createSeatTable);
 
 if (!$db) {
     echo "Error: Unable to connect to MySQL." . PHP_EOL;

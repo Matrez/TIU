@@ -2,6 +2,8 @@
 //-----VARIABLES-----
 //--------------------
 $button-grey-color: #e4e4e4;
+$break-medium: 992px;
+$break-small: 489px;
 
 //--------------------
 //-----LOGIN PAGE-----
@@ -72,3 +74,67 @@ $button-grey-color: #e4e4e4;
   }
 }
 
+//--------------------
+//-----KINO PAGE-----
+//--------------------
+
+.kino-wrapper {
+  height: 100vh;
+  background-image: url('/assets/img/login-bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+
+  nav {
+    background-color: #f59947;
+    display: flex;
+    justify-content: center;
+
+    .nav-wrapper {
+      width: 80%;
+
+      .logged-in-username {
+        margin-left: 15%;
+
+        @media screen and (max-width: $break-medium) {
+          float: right;
+          margin-left: 0;
+        }
+      }
+    }
+
+    .brand-logo {
+      margin-left: 20px;
+    }
+  }
+
+  > .movies-wrapper {
+    display: flex;
+    justify-content: center;
+
+    > .container {
+      width: 80%;
+      max-width: 1480px;
+      margin-top: 50px;
+
+      .movie-row {
+        .card.horizontal {
+          @media screen and (max-width: $break-small) {
+            flex-direction: column;
+
+            .card-image {
+              margin: 0 auto;
+            }
+          }
+
+          .card-image {
+            img {
+              max-height: 250px;
+            }
+          }
+        }
+      }
+
+
+    }
+  }
+}

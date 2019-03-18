@@ -8,7 +8,7 @@ $pageTitle = 'Register';
 include 'src/templates/header.php';
 include 'src/templates/header-close.php';
 ?>
-
+<link rel="stylesheet" href="/src/css/material.min.css">
 <div class="login-wrapper">
     <div class="login-card-wrapper">
         <div class="login-card-menu">
