@@ -11,13 +11,13 @@ define("DB_NAME", "tiu");
 $db = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 $createUserTable = 'CREATE TABLE IF NOT EXISTS users (
-id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+userID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 username VARCHAR(64) NOT NULL,
 password_hash CHAR(60) NOT NULL
 );';
 
 $createSeatTable = 'CREATE TABLE IF NOT EXISTS seats (
-seatMovieId INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+seatMovieID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 seat1 TINYINT UNSIGNED NOT NULL,
 seat2 TINYINT UNSIGNED NOT NULL,
 seat3 TINYINT UNSIGNED NOT NULL,
@@ -41,16 +41,21 @@ seat20 TINYINT UNSIGNED NOT NULL
 );';
 
 $createMovieTable = 'CREATE TABLE IF NOT EXISTS movies (
-movieId INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+movieID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 title VARCHAR(64) NOT NULL,
 description VARCHAR(1024) NOT NULL,
-seatMovieId INT UNSIGNED NOT NULL,
+seatMovieID INT UNSIGNED NOT NULL,
 FOREIGN KEY (seatMovieID) REFERENCES seats(seatMovieID)
 );';
 
-mysqli_query($db, $createUserTable);
-mysqli_query($db, $createMovieTable);
-mysqli_query($db, $createSeatTable);
+$createOrderTable = 'CREATE TABLE IF NOT EXISTS orders (
+orderID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+userID INT UNSIGNED NOT NULL,
+movieID INT UNISGNED NOT NULL,
+orderedSeats varchar(128) NOT NULL,
+FOREIGN KEY (userID) REFERENCES users(userID),
+FOREIGN KEY (movieID) REFERENCES movies(movieID)
+);';
 
 if (!$db) {
     echo "Error: Unable to connect to MySQL." . PHP_EOL;
@@ -58,3 +63,8 @@ if (!$db) {
     echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
     exit;
 }
+
+mysqli_query($db, $createUserTable);
+mysqli_query($db, $createMovieTable);
+mysqli_query($db, $createSeatTable);
+mysqli_query($db, $createOrderTable);

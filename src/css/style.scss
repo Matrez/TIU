@@ -3,6 +3,7 @@
 //--------------------
 $button-grey-color: #e4e4e4;
 $primary-color: #f59947;
+$error-message-color: #ff3232;
 $break-medium: 992px;
 $break-small: 489px;
 
@@ -25,7 +26,7 @@ $break-small: 489px;
   .error-message-username,
   .error-message-username-exists {
     display: none;
-    color: #ff3232;
+    color: $error-message-color;
     padding-bottom: 10px;
   }
 
@@ -144,16 +145,28 @@ $break-small: 489px;
 
 .movies-wrapper {
   .file-field {
+    margin-right: 10px;
+
     .btn {
       margin-left: 10px;
       background-color: $primary-color;
     }
+
+    .error-message-image {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+
+  .error-message-title, .error-message-desc, .error-message-image {
+    display: none;
+    color: $error-message-color;
   }
 
   button.btn-submit {
     background-color: $primary-color;
   }
-  
+
   .movie-success {
     color: $primary-color;
   }

@@ -6,8 +6,12 @@ if ($_SESSION['loggedin'] != true) {
     exit;
 }
 $pageTitle = 'Kino';
+include 'src/templates/db-config.php';
 include 'src/templates/header.php';
 include 'src/templates/header-close.php';
+
+$selectAllMoviesQuery = 'SELECT * FROM movies;';
+$moviesResult = mysqli_query($db, $selectAllMoviesQuery);
 ?>
 
 <div class="kino-wrapper">
@@ -39,25 +43,26 @@ include 'src/templates/header-close.php';
 
     <div class="movies-wrapper">
         <div class="container">
-            <div class="movie-row">
-                <div class="col s12 m7">
-                    <div class="card horizontal">
-                        <div class="card-image">
-                            <img src="/src/img/moviesimg/1.jpg">
-                        </div>
-                        <div class="card-stacked">
-                            <div class="card-content">
-                                <p>I am a very simple card. I am good at containing small bits of information.</p>
+            <!--Iterate over every movie-->
+            <?php while ($row = mysqli_fetch_assoc($moviesResult)) { ?>
+                <div class="movie-row">
+                    <div class="col s12 m7">
+                        <div class="card horizontal">
+                            <div class="card-image">
+                                <img src="/src/img/moviesimg/<?php $row['movieID'] ?>.jpg">
                             </div>
-                            <div class="card-action">
-                                <a href="#">Order</a>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <p>I am a very simple card. I am good at containing small bits of information.</p>
+                                </div>
+                                <div class="card-action">
+                                    <a href="#">Order</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-
+            <?php } ?>
         </div>
     </div>
 </div>

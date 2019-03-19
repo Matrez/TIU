@@ -99,9 +99,20 @@
   max-height: 250px;
 }
 
+.movies-wrapper .file-field {
+  margin-right: 10px;
+}
 .movies-wrapper .file-field .btn {
   margin-left: 10px;
   background-color: #f59947;
+}
+.movies-wrapper .file-field .error-message-image {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.movies-wrapper .error-message-title, .movies-wrapper .error-message-desc, .movies-wrapper .error-message-image {
+  display: none;
+  color: #ff3232;
 }
 .movies-wrapper button.btn-submit {
   background-color: #f59947;

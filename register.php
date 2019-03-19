@@ -75,9 +75,9 @@ include 'src/templates/footer.php';
     function validateRegisterForm(form) {
         errorMessageUsernameExists.style.display = 'none';
 
-        let username = form.name.value;
-        let password = form.password.value;
-        let passwordAgain = form.passwordAgain.value;
+        const username = form.name.value;
+        const password = form.password.value;
+        const passwordAgain = form.passwordAgain.value;
         const errorMessagePasswordMatch = document.querySelector('.error-message-password-match');
         const errorMessagePasswordMinimum = document.querySelector('.error-message-password-minimum');
         const errorMessageUsername = document.querySelector('.error-message-username');

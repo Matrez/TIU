@@ -65,10 +65,12 @@ include 'src/templates/header-close.php';
                                 <div class="input-field col s12">
                                     <input id="movie-title" type="text" name="title">
                                     <label for="movie-title">Full Title of movie</label>
+                                    <p class="error-message-title">Title can't be empty</p>
                                 </div>
                                 <div class="input-field col s12">
                                     <textarea id="textarea1" class="materialize-textarea" name="desc"></textarea>
                                     <label for="textarea1">Description of movie</label>
+                                    <p class="error-message-desc">Description can't be empty</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -80,6 +82,7 @@ include 'src/templates/header-close.php';
                                     <div class="file-path-wrapper">
                                         <input class="file-path validate" type="text">
                                     </div>
+                                    <p class="error-message-image">Image is required</p>
                                 </div>
                             </div>
                             <div class="row center">
@@ -99,6 +102,35 @@ include 'src/templates/footer.php';
 
 <script type="text/javascript">
     function validateForm(form) {
-        return true;
+        const title = form.title.value;
+        const desc = form.desc.value;
+        const image = form.image.value;
+        const titleError = document.querySelector('.error-message-title');
+        const descError = document.querySelector('.error-message-desc');
+        const imageError = document.querySelector('.error-message-image');
+        let reload = true;
+
+        if (title === '') {
+            reload = false;
+            titleError.style.display = 'block';
+        } else {
+            titleError.style.display = 'none';
+        }
+
+        if (desc === '') {
+            reload = false;
+            descError.style.display = 'block';
+        } else {
+            descError.style.display = 'none';
+        }
+
+        if (image === '') {
+            reload = false;
+            imageError.style.display = 'block';
+        } else {
+            imageError.style.display = 'none';
+        }
+
+        return reload;
     }
 </script>
