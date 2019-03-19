@@ -16,9 +16,9 @@ if (mysqli_num_rows($result) > 0) {
         // Hesla sa zhoduju
         $_SESSION['loggedin'] = true;
         $_SESSION['username'] = $username;
-        $_SESSION['memberid'] = $row['id'];
+        $_SESSION['memberid'] = $row['userID'];
 
-        if ($username == 'admin' && $row['id'] == 1) {
+        if ($username == 'admin' && $row['userID'] == 1) {
             $_SESSION['admin'] = true;
         }
 

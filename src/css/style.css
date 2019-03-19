@@ -53,7 +53,8 @@
 }
 
 .kino-wrapper {
-  height: 100vh;
+  min-height: 1080px;
+  height: 100%;
   background-image: url("/assets/img/login-bg.jpg");
   background-repeat: no-repeat;
   background-position: center top;
@@ -85,7 +86,7 @@
 .kino-wrapper > .movies-wrapper > .container {
   width: 80%;
   max-width: 1480px;
-  margin-top: 50px;
+  margin-top: 10px;
 }
 @media screen and (max-width: 489px) {
   .kino-wrapper > .movies-wrapper > .container .movie-row .card.horizontal {
@@ -97,6 +98,7 @@
 }
 .kino-wrapper > .movies-wrapper > .container .movie-row .card.horizontal .card-image img {
   max-height: 250px;
+  max-width: 250px;
 }
 
 .movies-wrapper .file-field {

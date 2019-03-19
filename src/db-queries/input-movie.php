@@ -19,15 +19,17 @@ if ($_SESSION['admin'] != true) {
     // Storing ID of movie/seat/image
     $row = mysqli_fetch_assoc($seatResult);
 
-    // Uklada vo formate "INSERT INTO movies VALUES (0, 'title', 'desc', 3);
-    $insertMovieQuery = "INSERT INTO movies VALUES 
-(0, '" . $movieTitle . "', '" . $movieDesc . "', " . $row['seatMovieID'] . ");";
-    mysqli_query($db, $insertMovieQuery);
-
     $info = pathinfo($_FILES['image']['name']);
     $ext = $info['extension']; // Gets the extension of the file
     $newname = $row['seatMovieID'] . "." . $ext;
     $target = '../img/moviesimg/' . $newname;
     move_uploaded_file($_FILES['image']['tmp_name'], $target);
+
+    // Uklada vo formate "INSERT INTO movies VALUES (0, 'title', 'desc', 'imageLink', 3);
+    $insertMovieQuery = "INSERT INTO movies VALUES 
+(0, '" . $movieTitle . "', '" . $movieDesc . "', '" . $newname . "', " . $row['seatMovieID'] . ");";
+    mysqli_query($db, $insertMovieQuery);
+
+
     header('Location: /admin-page.php?succes=1');
 }

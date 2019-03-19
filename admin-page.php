@@ -55,10 +55,10 @@ include 'src/templates/header-close.php';
                               onsubmit="return validateForm(this)">
                             <div class="row center">
                                 <?php if (isset($_GET['succes'])) { ?>
-                                <h4 class="movie-success">Successfully added a new movie!</h4>
-                                <h4>Do you want to add another movie?</h4>
+                                    <h4 class="movie-success">Successfully added a new movie!</h4>
+                                    <h4>Do you want to add another movie?</h4>
                                 <?php } else { ?>
-                                <h4>Adding a new movie</h4>
+                                    <h4>Adding a new movie</h4>
                                 <?php } ?>
                             </div>
                             <div class="row">
@@ -89,6 +89,15 @@ include 'src/templates/header-close.php';
                                 <button class="waves-effect wave-light btn btn-submit" type="submit">Submit</button>
                             </div>
                         </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m12">
+                <div class="card">
+                    <div class="card-content center">
+                        <h4 style="margin-top: ;">!_!_!_!_!_!_!</h4>
+                        <a class="waves-effect waves-light btn btn-submit" href="/src/db-queries/drop-tables.php">Drop
+                            all tables</a>
                     </div>
                 </div>
             </div>

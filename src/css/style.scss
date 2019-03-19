@@ -8,6 +8,10 @@ $break-medium: 992px;
 $break-small: 489px;
 
 //--------------------
+//-----GLOBAL-----
+//--------------------
+
+//--------------------
 //-----LOGIN PAGE-----
 //--------------------
 .login-wrapper {
@@ -81,7 +85,8 @@ $break-small: 489px;
 //--------------------
 
 .kino-wrapper {
-  height: 100vh;
+  min-height: 1080px;
+  height: 100%;
   background-image: url('/assets/img/login-bg.jpg');
   background-repeat: no-repeat;
   background-position: center top;
@@ -116,7 +121,7 @@ $break-small: 489px;
     > .container {
       width: 80%;
       max-width: 1480px;
-      margin-top: 50px;
+      margin-top: 10px;
 
       .movie-row {
         .card.horizontal {
@@ -131,6 +136,7 @@ $break-small: 489px;
           .card-image {
             img {
               max-height: 250px;
+              max-width: 250px;
             }
           }
         }

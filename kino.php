@@ -43,26 +43,36 @@ $moviesResult = mysqli_query($db, $selectAllMoviesQuery);
 
     <div class="movies-wrapper">
         <div class="container">
-            <!--Iterate over every movie-->
-            <?php while ($row = mysqli_fetch_assoc($moviesResult)) { ?>
-                <div class="movie-row">
-                    <div class="col s12 m7">
-                        <div class="card horizontal">
-                            <div class="card-image">
-                                <img src="/src/img/moviesimg/<?php $row['movieID'] ?>.jpg">
-                            </div>
-                            <div class="card-stacked">
-                                <div class="card-content">
-                                    <p>I am a very simple card. I am good at containing small bits of information.</p>
-                                </div>
-                                <div class="card-action">
-                                    <a href="#">Order</a>
+            <?php
+            if (!is_bool($moviesResult)) {
+                /* Check if there is at least one result */
+                if (mysqli_num_rows($moviesResult) > 0) {
+                    /* Iterate over every movie */
+                    while ($row = mysqli_fetch_assoc($moviesResult)) {
+                        ?>
+                        <div class="movie-row">
+                            <div class="col s12 m7">
+                                <div class="card horizontal">
+                                    <div class="card-image">
+                                        <img src="/src/img/moviesimg/<?php echo $row['imageLink'] ?>">
+                                    </div>
+                                    <div class="card-stacked">
+                                        <div class="card-content">
+                                            <h4><?php echo $row['title'] ?></h4>
+                                            <p><?php echo $row['description'] ?></p>
+                                        </div>
+                                        <div class="card-action">
+                                            <a href="/reservation.php?movieID=<?php echo $row['movieID'] ?>">Order</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            <?php } ?>
+                        <?php
+                    }
+                }
+            }
+            ?>
         </div>
     </div>
 </div>
