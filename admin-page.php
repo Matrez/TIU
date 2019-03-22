@@ -93,29 +93,29 @@ include 'src/templates/footer.php';
         const titleError = document.querySelector('.error-message-title');
         const descError = document.querySelector('.error-message-desc');
         const imageError = document.querySelector('.error-message-image');
-        let reload = true;
+        let redirect = true;
 
         if (title === '') {
-            reload = false;
+            redirect = false;
             titleError.style.display = 'block';
         } else {
             titleError.style.display = 'none';
         }
 
         if (desc === '') {
-            reload = false;
+            redirect = false;
             descError.style.display = 'block';
         } else {
             descError.style.display = 'none';
         }
 
         if (image === '') {
-            reload = false;
+            redirect = false;
             imageError.style.display = 'block';
         } else {
             imageError.style.display = 'none';
         }
 
-        return reload;
+        return redirect;
     }
 </script>

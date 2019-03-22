@@ -81,12 +81,12 @@ include 'src/templates/footer.php';
         const errorMessagePasswordMatch = document.querySelector('.error-message-password-match');
         const errorMessagePasswordMinimum = document.querySelector('.error-message-password-minimum');
         const errorMessageUsername = document.querySelector('.error-message-username');
-        let reload = true;
+        let redirect = true;
 
         // Check if username doesn't contain letters and  have white spaces
         if (!username.match('[a-zA-Z0-9]') || username.includes(' ')) {
             errorMessageUsername.style.display = 'block';
-            reload = false;
+            redirect = false;
         } else {
             errorMessageUsername.style.display = 'none';
         }
@@ -94,7 +94,7 @@ include 'src/templates/footer.php';
         // Check if passwords don't match
         if (password !== passwordAgain) {
             errorMessagePasswordMatch.style.display = 'block';
-            reload = false;
+            redirect = false;
         } else {
             errorMessagePasswordMatch.style.display = 'none';
         }
@@ -102,11 +102,11 @@ include 'src/templates/footer.php';
         // Check if password is shorter than 6
         if (password.length < 6) {
             errorMessagePasswordMinimum.style.display = 'block';
-            reload = false;
+            redirect = false;
         } else {
             errorMessagePasswordMinimum.style.display = 'none';
         }
 
-        return reload;
+        return redirect;
     }
 </script>

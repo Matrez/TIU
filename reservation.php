@@ -46,11 +46,11 @@ $seatTemplateId = 1;
                 <div class="card">
                     <div class="card-content center">
                         <!--Success on ordering-->
-                        <!--TODO: create some popup text that order was successful-->
-                        <!--Platno-->
-                        <div class="row">
-                            <h4 class="success-message">Seats were successfully reserved</h4>
+                        <div class="row success-message">
+                            <h4>Seats were successfully reserved</h4>
                         </div>
+
+                        <!--Platno-->
                         <div class="row platno-wrapper">
                             <div id="platno">
                                 THIS WAY IS SCREEN
@@ -59,7 +59,8 @@ $seatTemplateId = 1;
                         <!--Seats-->
                         <div class="row">
                             <form action="/src/db-queries/insert-seat.php"
-                                  method="post">
+                                  method="post"
+                                  onsubmit="return validateSeat(this);">
                                 <input type="hidden" name="seatMovieID" value="<?php echo $movieID ?>">
                                 <?php for ($i = 1; $i <= 4; $i++) { ?>
                                     <div class="seat-row"><span class="row-id">ROW <?php echo $i ?>:</span>
@@ -68,7 +69,8 @@ $seatTemplateId = 1;
                                                 <input <?php if ($seatResult['seat' . $seatTemplateId] == 1) { ?>
                                                         disabled="disabled"
                                                         <?php } ?>type="checkbox"
-                                                        name="seat<?php echo $seatTemplateId ?>"/>
+                                                        name="seat<?php echo $seatTemplateId ?>"
+                                                        id="seat<?php echo $seatTemplateId ?>"/>
                                                 <span class="seat-number"><?php echo $seatTemplateId ?></span>
                                             </label>
                                             <?php $seatTemplateId++ ?>
@@ -101,5 +103,16 @@ include 'src/templates/footer.php';
     const param = parseInt(url.searchParams.get('success'));
     if (param === 1) {
         successMessage.style.display = 'block';
+    }
+
+    function validateSeat(form) {
+        let redirect = false;
+        for (let i = 1; i <= 20; i++) {
+            if (document.querySelector('#seat' + i).checked === true) {
+                // Je zaskrtnute policko
+                redirect = true;
+            }
+        }
+        return redirect;
     }
 </script>

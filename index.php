@@ -66,18 +66,18 @@ include 'src/templates/footer.php';
         errorMessageUsername.style.display = 'none';
         const username = form.name.value;
         const password = form.password.value;
-        let reload = true;
+        let redirect = true;
 
         // Check if username is empty
         if (username.length <= 0) {
-            reload = false;
+            redirect = false;
         }
 
         // Check if password is empty
         if (password.length <= 0) {
-            reload = false;
+            redirect = false;
         }
 
-        return reload;
+        return redirect;
     }
 </script>

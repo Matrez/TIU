@@ -28,9 +28,9 @@ $queryResult = mysqli_query($db, $selectQuery);
                         <div class="card">
                             <div class="card-content">
                                 <div class="row center">
-                                    <h4>Order ID: <b>#<?php echo $row['orderID'] ?></b></h4>
-                                    <h4>Name of movie: <b><?php echo $row['title']; ?></b></h4>
-                                    <h4>Ordered seats: <b><?php echo $row['orderedSeat']; ?></b></h4>
+                                    <h5>Order ID: <b>#<?php echo $row['orderID'] ?></b></h5>
+                                    <h5>Name of movie: <b><?php echo $row['title']; ?></b></h5>
+                                    <h5>Ordered seats: <b><?php echo $row['orderedSeat']; ?></b></h5>
                                     <a href="/reservation.php?movieID=<?php echo $row['movieID'] ?>"
                                        class="waves-effect wave-light btn btn-submit">LINK TO MOVIE</a>
                                     <!--TODO: dorobit delete orderu-->
