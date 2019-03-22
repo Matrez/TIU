@@ -177,3 +177,58 @@ $break-small: 489px;
     color: $primary-color;
   }
 }
+
+//--------------------
+//-----SEAT PAGE-----
+//--------------------
+
+.kino-wrapper {
+  .platno-wrapper {
+    display: flex;
+    justify-content: center;
+
+    #platno {
+      width: 20%;
+      border-bottom: 4px solid black;
+      font-size: 1.4em;
+    }
+  }
+
+  .seat-row {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 8px;
+
+    .row-id {
+      padding-right: 20px;
+    }
+
+    .seat-number {
+      padding-right: 20px;
+      padding-left: 20px;
+      width: 55px;
+    }
+  }
+
+  .success-message {
+    display: none;
+    color: $primary-color;
+  }
+}
+
+//--------------------
+//-----ORDERS PAGE----
+//--------------------
+
+.orders-wrapper {
+  h4 {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 170px;
+    padding-right: 170px;
+  }
+
+  .delete-order {
+    background-color: red;
+  }
+}

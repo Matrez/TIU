@@ -123,4 +123,41 @@
   color: #f59947;
 }
 
+.kino-wrapper .platno-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.kino-wrapper .platno-wrapper #platno {
+  width: 20%;
+  border-bottom: 4px solid black;
+  font-size: 1.4em;
+}
+.kino-wrapper .seat-row {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 8px;
+}
+.kino-wrapper .seat-row .row-id {
+  padding-right: 20px;
+}
+.kino-wrapper .seat-row .seat-number {
+  padding-right: 20px;
+  padding-left: 20px;
+  width: 55px;
+}
+.kino-wrapper .success-message {
+  display: none;
+  color: #f59947;
+}
+
+.orders-wrapper h4 {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 170px;
+  padding-right: 170px;
+}
+.orders-wrapper .delete-order {
+  background-color: red;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -22,67 +22,70 @@ $selectSeats = "SELECT * FROM seats WHERE seatMovieID=" . $movieID . ";";
 $moviesQueryResult = mysqli_query($db, $selectMovie);
 $seatQueryResult = mysqli_query($db, $selectSeats);
 
+$movieResult = mysqli_fetch_assoc($moviesQueryResult);
+$seatResult = mysqli_fetch_assoc($seatQueryResult);
+
+$seatTemplateId = 1;
 ?>
 
 <div class="kino-wrapper">
-    <nav>
-        <div class="nav-wrapper">
-            <a href="/kino.php" class="brand-logo hide-on-med-and-down">Kino</a>
-            <span class="logged-in-username">You're logged in as: <b><?php echo $_SESSION['username'] ?></b></span>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="#">My reservations</a></li>
-                <li><a href="#">About</a></li>
-                <?php if (isset($_SESSION['admin'])) { ?>
-                    <li><a href="/admin-page.php">Admin page</a></li>
-                <?php } ?>
-                <li><a href="/src/templates/nav.php?logOut=1">Log Out</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <ul class="sidenav" id="mobile-demo">
-        <li><a href="#">Kino</a></li>
-        <li><a href="#">My reservations</a></li>
-        <li><a href="#">About</a></li>
-        <?php if (isset($_SESSION['admin'])) { ?>
-            <li><a href="/admin-page.php">Admin page</a></li>
-        <?php } ?>
-        <li><a href="/src/templates/nav.php?logOut=1">Log Out</a></li>
-    </ul>
+    <?php include 'src/templates/navbar.php'; ?>
 
     <div class="movies-wrapper">
         <div class="container">
-            <?php
-            if (!is_bool($moviesResult)) {
-                /* Check if there is at least one result */
-                if (mysqli_num_rows($moviesResult) > 0) {
-                    /* Iterate over every movie */
-                    while ($row = mysqli_fetch_assoc($moviesResult)) {
-                        ?>
-                        <div class="movie-row">
-                            <div class="col s12 m7">
-                                <div class="card horizontal">
-                                    <div class="card-image">
-                                        <img src="/src/img/moviesimg/<?php echo $row['imageLink'] ?>">
-                                    </div>
-                                    <div class="card-stacked">
-                                        <div class="card-content">
-                                            <h4><?php echo $row['title'] ?></h4>
-                                            <p><?php echo $row['description'] ?></p>
-                                        </div>
-                                        <div class="card-action">
-                                            <a href="/reservation.php?movieID=<?php echo $row['movieID'] ?>">Order</a>
-                                        </div>
-                                    </div>
-                                </div>
+            <div class="col s12 m12">
+                <div class="card">
+                    <div class="card-content center">
+                        <h1>----RESERVATION ON MOVIE----</h1>
+                        <h2><?php echo $movieResult['title'] ?></h2>
+                        <p><?php echo $movieResult['description'] ?></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m12">
+                <div class="card">
+                    <div class="card-content center">
+                        <!--Success on ordering-->
+                        <!--TODO: create some popup text that order was successful-->
+                        <!--Platno-->
+                        <div class="row">
+                            <h4 class="success-message">Seats were successfully reserved</h4>
+                        </div>
+                        <div class="row platno-wrapper">
+                            <div id="platno">
+                                THIS WAY IS SCREEN
                             </div>
                         </div>
-                        <?php
-                    }
-                }
-            }
-            ?>
+                        <!--Seats-->
+                        <div class="row">
+                            <form action="/src/db-queries/insert-seat.php"
+                                  method="post">
+                                <input type="hidden" name="seatMovieID" value="<?php echo $movieID ?>">
+                                <?php for ($i = 1; $i <= 4; $i++) { ?>
+                                    <div class="seat-row"><span class="row-id">ROW <?php echo $i ?>:</span>
+                                        <?php for ($k = 1; $k <= 5; $k++) { ?>
+                                            <label>
+                                                <input <?php if ($seatResult['seat' . $seatTemplateId] == 1) { ?>
+                                                        disabled="disabled"
+                                                        <?php } ?>type="checkbox"
+                                                        name="seat<?php echo $seatTemplateId ?>"/>
+                                                <span class="seat-number"><?php echo $seatTemplateId ?></span>
+                                            </label>
+                                            <?php $seatTemplateId++ ?>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
+                                <div class="row center">
+                                    <button style="margin-top: 20px;" class="waves-effect wave-light btn btn-submit"
+                                            type="submit">Order seats
+                                    </button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -90,3 +93,13 @@ $seatQueryResult = mysqli_query($db, $selectSeats);
 <?php
 include 'src/templates/footer.php';
 ?>
+
+<script type="text/javascript">
+    const successMessage = document.querySelector('.success-message');
+    let url = window.location.href;
+    url = new URL(url);
+    const param = parseInt(url.searchParams.get('success'));
+    if (param === 1) {
+        successMessage.style.display = 'block';
+    }
+</script>
