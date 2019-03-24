@@ -28,14 +28,18 @@ $queryResult = mysqli_query($db, $selectQuery);
                         <div class="card">
                             <div class="card-content">
                                 <div class="row center">
-                                    <h5>Order ID: <b>#<?php echo $row['orderID'] ?></b></h5>
-                                    <h5>Name of movie: <b><?php echo $row['title']; ?></b></h5>
-                                    <h5>Ordered seats: <b><?php echo $row['orderedSeat']; ?></b></h5>
-                                    <a href="/reservation.php?movieID=<?php echo $row['movieID'] ?>"
-                                       class="waves-effect wave-light btn btn-submit">LINK TO MOVIE</a>
-                                    <!--TODO: dorobit delete orderu-->
-                                    <a href="#" class="delete-order waves-effect wave-light btn btn-submit">DELETE
-                                        ORDER</a>
+                                    <form action="src/db-queries/remove-order.php">
+                                        <h5>Order ID: <b>#<?php echo $row['orderID'] ?></b></h5>
+                                        <h5>Name of movie: <b><?php echo $row['title']; ?></b></h5>
+                                        <h5>Ordered seats: <b><?php echo $row['orderedSeat']; ?></b></h5>
+                                        <a href="/reservation.php?movieID=<?php echo $row['movieID'] ?>"
+                                           class="waves-effect wave-light btn btn-submit">LINK TO MOVIE</a>
+                                        <input type="hidden" value="<?php echo $row['orderID']; ?>" name="orderID">
+                                        <button type="submit"
+                                                class="delete-order waves-effect wave-light btn btn-submit">DELETE
+                                            ORDER
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
