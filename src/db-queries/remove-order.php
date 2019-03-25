@@ -22,4 +22,9 @@ foreach ($arrayOfSeats as $key => $value) {
 $deleteQuery = "DELETE FROM orders WHERE orderID={$orderID};";
 mysqli_query($db, $deleteQuery);
 
+if (isset($_GET['all-orders'])) {
+    header('Location: /all-orders.php');
+    exit;
+}
 header('Location: /orders.php');
+exit;

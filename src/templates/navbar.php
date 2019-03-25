@@ -8,6 +8,7 @@
             <li><a href="/about.php">About</a></li>
             <?php if (isset($_SESSION['admin'])) { ?>
                 <li><a href="/admin-page.php">Admin page</a></li>
+                <li><a href="/all-orders.php">All reservations</a></li>
             <?php } ?>
             <li><a href="/src/templates/logout.php?logOut=1">Log Out</a></li>
         </ul>
@@ -20,6 +21,7 @@
     <li><a href="/about.php">About</a></li>
     <?php if (isset($_SESSION['admin'])) { ?>
         <li><a href="/admin-page.php">Admin page</a></li>
+        <li><a href="/all-orders.php">All reservations</a></li>
     <?php } ?>
     <li><a href="/src/templates/logout.php?logOut=1">Log Out</a></li>
 </ul>
