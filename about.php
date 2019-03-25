@@ -34,7 +34,7 @@ include 'src/templates/header-close.php';
                             <h6>Creating the site took 7-8 hours.</h6>
                             <h6>Fresh deployment setup on linux took 12-14 hours.</h6>
                             <h6><a href="https://github.com/Matrez/TIU" target="_blank">Github Page</a></h6>
-                            <p class="center">Matej Strnisko, 4.A - 2019</p>
+                            <h5 class="center">Matej Strnisko, 4.A - 2019</h5>
                         </div>
                     </div>
                 </div>
