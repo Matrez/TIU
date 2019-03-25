@@ -91,6 +91,10 @@ $break-small: 489px;
   background-repeat: no-repeat;
   background-position: center top;
 
+  .delete-movie {
+    color: red !important;
+  }
+
   nav {
     background-color: $primary-color;
     display: flex;

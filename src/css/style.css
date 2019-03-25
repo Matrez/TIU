@@ -59,6 +59,9 @@
   background-repeat: no-repeat;
   background-position: center top;
 }
+.kino-wrapper .delete-movie {
+  color: red !important;
+}
 .kino-wrapper nav {
   background-color: #f59947;
   display: flex;

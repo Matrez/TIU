@@ -39,6 +39,9 @@ $moviesResult = mysqli_query($db, $selectAllMoviesQuery);
                                         </div>
                                         <div class="card-action">
                                             <a href="/reservation.php?movieID=<?php echo $row['movieID'] ?>">Order</a>
+                                            <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) { ?>
+                                            <a class="delete-movie right" href="/delete-movie.php?movieID=<?php echo $row['movieID'] ?>">DELETE MOVIE</a>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
